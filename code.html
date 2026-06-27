@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Moin Khan - Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Add AOS CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#046a38",
+                      "secondary": "#cca340",
+                      "background": "#fafafa",
+                      "on-background": "#1a1a1a",
+                      "surface": "#ffffff",
+                      "on-surface": "#1a1a1a",
+                      "on-surface-variant": "#555555",
+                      "primary": "#046a38",
+                      "on-primary-fixed": "#ffffff",
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-page": "6rem",
+                      "grid-watermark-opacity": "0.02",
+                      "margin-mobile": "2rem",
+                      "section-gap": "10rem",
+                      "gutter": "3rem"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Playfair Display"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Playfair Display"],
+                      "label-caps": ["Inter"],
+                      "headline-md": ["Playfair Display"],
+                      "display": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.8", "fontWeight": "300"}],
+                      "body-lg": ["20px", {"lineHeight": "1.8", "fontWeight": "300"}],
+                      "headline-lg": ["56px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                      "headline-md": ["36px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            }
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .gold-grid {
+            background-image: 
+                linear-gradient(theme('colors.secondary') 1px, transparent 1px),
+                linear-gradient(90deg, theme('colors.secondary') 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.05;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .pearl-orb {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #e0e0e0 0%, transparent 70%);
+            opacity: 0.3;
+            filter: blur(120px);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .gold-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(204, 163, 64, 0.3), transparent);
+            width: 100%;
+        }
+
+        .btn-emerald {
+            background: linear-gradient(135deg, theme('colors.primary-container') 0%, #024a26 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 8px 24px rgba(4, 106, 56, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-emerald::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        .btn-emerald:hover::before {
+            left: 100%;
+        }
+        .btn-emerald:hover {
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 12px 32px rgba(4, 106, 56, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .luxury-card {
+            background-color: theme('colors.surface');
+            border: 1px solid rgba(204, 163, 64, 0.15);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .luxury-card::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(204, 163, 64, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .luxury-card:hover {
+            border-color: rgba(204, 163, 64, 0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+            transform: translateY(-5px);
+        }
+        .luxury-card:hover::after {
+            opacity: 1;
+        }
+
+        .luxury-input {
+            background-color: theme('colors.surface');
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        .luxury-input:focus {
+            border-color: theme('colors.secondary');
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02), 0 0 0 3px rgba(204, 163, 64, 0.1);
+            outline: none;
+        }
+
+        /* Initial Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: theme('colors.background');
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .loader-line {
+            width: 0;
+            height: 1px;
+            background-color: theme('colors.secondary');
+            animation: drawLine 1s ease-in-out forwards;
+        }
+        .loader-logo {
+            opacity: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: theme('colors.secondary');
+            margin-top: 1rem;
+            animation: fadeInLogo 1s ease-in-out 1s forwards;
+        }
+
+        @keyframes drawLine {
+            to { width: 100px; }
+        }
+        @keyframes fadeInLogo {
+            to { opacity: 1; }
+        }
+
+        /* Overlay */
+        #project-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(250, 250, 250, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            overflow-y: auto;
+        }
+        #project-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .overlay-content {
+            transform: translateY(30px);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #project-overlay.active .overlay-content {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+<!-- Initial Loader -->
+<div id="loader">
+<div class="loader-line"></div>
+<div class="loader-logo">MK</div>
+</div>
+<!-- Background Elements -->
+<div class="gold-grid"></div>
+<div class="pearl-orb" style="top: 5%; left: 15%;"></div>
+<div class="pearl-orb" style="bottom: 15%; right: 5%;"></div>
+<!-- Navigation -->
+<nav class="bg-background/90 backdrop-blur-lg fixed top-0 w-full z-50 border-b border-black/5 shadow-sm">
+<div class="flex justify-between items-center px-margin-page py-8 w-full max-w-none">
+<div class="font-headline-md text-headline-md font-bold text-secondary cursor-pointer tracking-wider">
+                MK
+            </div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex gap-10 items-center">
+<a class="font-label-caps text-label-caps text-primary font-bold border-b-2 border-primary pb-1 cursor-pointer hover:text-primary transition-all duration-300" href="#home">Home</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary cursor-pointer transition-all duration-300" href="#about">About</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary cursor-pointer transition-all duration-300" href="#projects">Projects</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary cursor-pointer transition-all duration-300" href="#contact">Contact</a>
+</div>
+<!-- Mobile Nav Toggle (Icon) -->
+<div class="md:hidden text-secondary cursor-pointer">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="relative z-10 pt-[120px]">
+<!-- Hero Section -->
+<section class="min-h-[90vh] flex flex-col justify-center items-center px-margin-page section-gap text-center relative" id="home">
+<div class="relative w-56 h-56 mb-16">
+<div class="absolute inset-3 rounded-full border border-secondary/30 z-10 overflow-hidden flex items-center justify-center bg-surface shadow-2xl">
+<span class="material-symbols-outlined text-5xl text-secondary opacity-70">person</span>
+</div>
+<div class="absolute inset-0 rounded-full border-2 border-primary/20 animate-[spin_10s_linear_infinite]"></div>
+</div>
+<h1 class="font-display text-display text-on-background mb-8" data-aos="fade-up">Hi, I'm Moin Khan</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="100">
+                I create elegant digital experiences blending sophisticated design with modern technology.
+            </p>
+<div class="font-label-caps text-label-caps text-secondary mb-16" data-aos="fade-up" data-aos-delay="200">
+                [ Designer &amp; Developer ]
+            </div>
+<button class="btn-emerald px-10 py-5 rounded-sm font-label-caps text-label-caps text-on-primary-fixed tracking-widest uppercase" data-aos="fade-up" data-aos-delay="300">
+                See My Work ↓
+            </button>
+</section>
+<!-- Gold Divider -->
+<div class="px-margin-page py-12"><div class="gold-divider"></div></div>
+<!-- About Section -->
+<section class="py-section-gap px-margin-page" id="about">
+<div class="max-w-5xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-secondary mb-16 text-center">Who is Moin Khan?</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                            I am a passionate creator exploring the intersection of design, code, and artificial intelligence. My journey is driven by a curiosity to build intuitive and aesthetically pleasing digital products that stand the test of time.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Every project is a stepping stone, an opportunity to refine my craft and push the boundaries of what I can build using modern tools and frameworks with an editorial eye.
+                        </p>
+</div>
+<div class="pl-0 md:pl-12 border-l-0 md:border-l border-secondary/20">
+<h3 class="font-label-caps text-label-caps text-on-background mb-8 tracking-widest uppercase">Technologies &amp; Tools</h3>
+<div class="flex flex-wrap gap-4">
+<span class="px-6 py-3 rounded-sm bg-surface border border-secondary/20 font-label-caps text-label-caps text-on-surface shadow-sm">Pomeelo AI</span>
+<span class="px-6 py-3 rounded-sm bg-surface border border-secondary/20 font-label-caps text-label-caps text-on-surface shadow-sm">Stitch</span>
+<span class="px-6 py-3 rounded-sm bg-surface border border-secondary/20 font-label-caps text-label-caps text-on-surface shadow-sm">Figma</span>
+<span class="px-6 py-3 rounded-sm bg-surface border border-secondary/20 font-label-caps text-label-caps text-on-surface shadow-sm">GitHub</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gold Divider -->
+<div class="px-margin-page py-12"><div class="gold-divider"></div></div>
+<!-- Projects Section -->
+<section class="py-section-gap px-margin-page" id="projects">
+<h2 class="font-headline-lg text-headline-lg text-secondary mb-20 text-center">Curated Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Project 1: BudgetWall -->
+<div class="luxury-card rounded-sm p-8 flex flex-col h-full" data-aos="fade-up" data-aos-delay="0">
+<div class="h-56 mb-8 rounded-sm overflow-hidden relative border border-black/5">
+<img alt="BudgetWall Dashboard" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsGl-7mTzLqtPg2h4uNcUJ6iQQYCMZW1zRMI9cbl9nSJ1FyRBV-_bMgKT6F6rpnpTUM4bQHBJ-mZGjIHBd405n4lPfGqTAWpruker_DQRTJAOrvI4zGjGsxPTwNceXAsCSecEPmQ1kXCjl9a44-B2ALXLA9_E-JO7LmNUwtKURf80dzTf_nqwe741of-06Yf5UHFmO5UtzXjDXQWQpAjAHMEC4hhhUhNuPRGPv1kNy4GRj3_sDNxqUlSiF3Eq9D_4GEF8trex2g-E"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-4">BudgetWall</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">A comprehensive financial tracking dashboard with elegant analytics and expense visualization.</p>
+<button class="text-secondary font-label-caps text-label-caps tracking-widest self-start hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1" onclick="openOverlay('budgetwall')">SEE PROJECT →</button>
+</div>
+<!-- Project 2: Day Anchor -->
+<div class="luxury-card rounded-sm p-8 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+<div class="h-56 mb-8 rounded-sm overflow-hidden relative border border-black/5">
+<img alt="Day Anchor App" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATogbvDVS-j7qxsS3iDCPaYXL_wnRZ_m5oUP9CSzgszyedBfHzFRM0OLojpxfYq6h4De_UgaJrqAAtQG5wvNWYgOIMb_E6Nj7nqSHRd_TARAZEQKwuRIlI4cGtKOx4FL9CwL5nCX9nGN-AAsxNMGJyoDwigOq56KqTukZba5NphqcjmY8JEQZMIeS_YF1dwleDWP4iBHEPzEovnOyB36gAoN4J1hcBWrb6-0uk8EIdzdY8XL8t-imfBss4fp6PmDgAmxw22mtBiIA"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-4">Day Anchor</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">Premium scheduling and time management tool designed for deep work focus.</p>
+<button class="text-secondary font-label-caps text-label-caps tracking-widest self-start hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1" onclick="openOverlay('dayanchor')">SEE PROJECT →</button>
+</div>
+<!-- Project 3: Login Page -->
+<div class="luxury-card rounded-sm p-8 flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
+<div class="h-56 mb-8 rounded-sm overflow-hidden relative border border-black/5">
+<img alt="Login Page" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4oCPlOLm9UqL8YgCAWldiZFmRKQ6kg1tl7xtvDvcTxabCJUacbg7y37znntNKeD7eU1tm9nROg80o7DyjZA6gL6oJJeCe0OgGiFrYAkaoL7RzhNKLHVQRYDENLTdz8ec8RW0z0_vBakklLrJBLFA51Wv0flNAoH7Vdr2CizQuCpli5RMrhzi9k-nuqD9KJefh5Ca9HYq_HzVmG2TfIkvJQXjoWiLh8puhyd0kmtAILUyKKWl8sl7J5E_Sze6xHUToYKrvfHiw1V4"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-4">Login Page</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">A sleek, atmospheric authentication flow focusing on modern glowing aesthetics.</p>
+<button class="text-secondary font-label-caps text-label-caps tracking-widest self-start hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1" onclick="openOverlay('vividnoir')">SEE PROJECT →</button>
+</div>
+</div>
+</section>
+<!-- Gold Divider -->
+<div class="px-margin-page py-12"><div class="gold-divider"></div></div>
+<!-- Contact Section -->
+<section class="py-section-gap px-margin-page" id="contact">
+<div class="max-w-2xl mx-auto text-center">
+<h2 class="font-headline-lg text-headline-lg text-secondary mb-16">Let's build something.</h2>
+<form class="space-y-8 text-left">
+<div>
+<label class="block font-label-caps text-label-caps text-on-background mb-3 uppercase tracking-widest">Name</label>
+<input class="luxury-input w-full rounded-sm px-5 py-4 text-on-background font-body-md" placeholder="Enter your name" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-background mb-3 uppercase tracking-widest">Email</label>
+<input class="luxury-input w-full rounded-sm px-5 py-4 text-on-background font-body-md" placeholder="Enter your email" type="email"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-background mb-3 uppercase tracking-widest">Message</label>
+<textarea class="luxury-input w-full rounded-sm px-5 py-4 text-on-background font-body-md" placeholder="How can we collaborate?" rows="5"></textarea>
+</div>
+<button class="btn-emerald w-full py-5 rounded-sm font-label-caps text-label-caps text-on-primary-fixed tracking-widest mt-8 uppercase" type="button">
+                        SEND MESSAGE
+                    </button>
+</form>
+<div class="mt-16 flex justify-center gap-10">
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-4xl">code</span></a>
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-4xl">work</span></a>
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-4xl">chat</span></a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface w-full py-16 border-t border-secondary/20 flex flex-col items-center justify-center gap-6 px-margin-page mt-20">
+<div class="font-headline-md text-headline-md text-secondary tracking-widest">
+            MK
+        </div>
+<div class="flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant/70 mt-4">
+            © 2024 Moin Khan. All Rights Reserved.
+        </div>
+</footer>
+<!-- Project Overlay -->
+<div id="project-overlay">
+<div class="absolute top-10 right-10 cursor-pointer text-secondary hover:text-primary z-50 transition-colors" onclick="closeOverlay()">
+<span class="material-symbols-outlined text-5xl">close</span>
+</div>
+<div class="w-full max-w-6xl mx-auto pt-32 pb-20 px-margin-page overlay-content" id="overlay-content-area">
+<!-- Content injected via JS -->
+</div>
+</div>
+<!-- Add Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+        // Initialize AOS and GSAP on load, preserve loader sequence
+        window.addEventListener('load', () => {
+            // Initialize AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    offset: 100
+                });
+            }
+
+            // Initialize GSAP ScrollTrigger refresh
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                ScrollTrigger.refresh();
+            }
+
+            // Loader sequence
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                }, 1000);
+            }, 1500);
+        });
+
+        // Basic overlay logic
+        const overlay = document.getElementById('project-overlay');
+        const overlayContent = document.getElementById('overlay-content-area');
+
+        const projectData = {
+            budgetwall: {
+                title: 'BudgetWall',
+                images: [
+                    'https://lh3.googleusercontent.com/aida-public/AB6AXuDsGl-7mTzLqtPg2h4uNcUJ6iQQYCMZW1zRMI9cbl9nSJ1FyRBV-_bMgKT6F6rpnpTUM4bQHBJ-mZGjIHBd405n4lPfGqTAWpruker_DQRTJAOrvI4zGjGsxPTwNceXAsCSecEPmQ1kXCjl9a44-B2ALXLA9_E-JO7LmNUwtKURf80dzTf_nqwe741of-06Yf5UHFmO5UtzXjDXQWQpAjAHMEC4hhhUhNuPRGPv1kNy4GRj3_sDNxqUlSiF3Eq9D_4GEF8trex2g-E',
+                    'https://lh3.googleusercontent.com/aida-public/AB6AXuC5RGKzSau0VNoVhCNo6o9zgqiMObEvA6InRoXdW9G2sENDSRPnT2XXrb3-nmsQKYOxLs9BuvoHj_94k0RpQpd4KD5EmfTFRASWhUsM_aVbOrgE6PXUOlg2mCyQSGTE0AF8lsvGOkmt01ioJuXsrwUkEr7jpUgFwCBuRUUsmWgp-a5Rz44yCEFBUv5hRhEzDSdfC5QnQ67ibZfkaroSs45qvYR0Y6d8G0G23JLEalTsYopOZE2g8nBuGV-CynQK5dk2Gt_lMfF9b_A',
+                    'https://lh3.googleusercontent.com/aida-public/AB6AXuCz-c3m8M8X-ZbenyyTiTd_j_NvL9_9RN63DuOJPk97UirlicQpYvoePJccyEQchycTLH_0cOKHQuayAHEMWAu3aA0sDdzHKcrZVoArAitRRMWnVH868rq7TL4MXKT__Oae_VMOXANLlBNVXp2AbBUEiXRuvWyeA4E74HVTOYrcoVtYL_ydHPseMMny9U3EevhAKPX35FMC2_WTFnbdR1BItRPXbWLmcSKZRUlR3xZtFRnvIYxM_jRYXSj5ABrZgHnPENGJC2P4RN4'
+                ]
+            },
+            dayanchor: {
+                title: 'Day Anchor',
+                images: [
+                    'https://lh3.googleusercontent.com/aida-public/AB6AXuATogbvDVS-j7qxsS3iDCPaYXL_wnRZ_m5oUP9CSzgszyedBfHzFRM0OLojpxfYq6h4De_UgaJrqAAtQG5wvNWYgOIMb_E6Nj7nqSHRd_TARAZEQKwuRIlI4cGtKOx4FL9CwL5nCX9nGN-AAsxNMGJyoDwigOq56KqTukZba5NphqcjmY8JEQZMIeS_YF1dwleDWP4iBHEPzEovnOyB36gAoN4J1hcBWrb6-0uk8EIdzdY8XL8t-imfBss4fp6PmDgAmxw22mtBiIA',
+                    'https://lh3.googleusercontent.com/aida-public/AB6AXuDbOQjT_tyxA86VOy6JCxu_V1xiEikjWHsP1inEqdz6xjlC7uRUqHn_zc-Oufe7LGWGtRkaHr-A_MK1Ph2F1VN0SbuvglP7s9Jr4IQfsleoJFiQ4YEZCMX8ndXjN1KJ86r-jWbw_QnNbtTbN_0FDSrTGaQ1sy8oawyZFu8BnIgWZuvPx5BwG9l2TOMpQYD5zGEZhtGEF0-MQ4IFlswWGpk9JR5lxEygc6k7eyiSQ43saqOcCyRMsAsJ563LeKmDKk2r8VPnYLxBH8s',
+                    'https://lh3.googleusercontent.com/aida-public/AB6AXuClrrqDZEQLvWh0SHlGuFQilzSrIBYmCbpEU0IZchdyt9vbRDGnKYQmEbbpXGsseR_cX7DmfAIuoZCYyiWhr5sBX-yh257g1qsUqTFlQ1NlVxag-ZhhnUFUP21j7bjSSCK0hZr10aMhCugkvKqArOhTzaD2notZVu_TmzJpSEVNnWxl7O6giswDX-X-NBoGvemZlrrS-b6RvvDZUaLj6kcd3_oEqQuzOKjC4sWiyRucg7glGBpFXi1pXkXD7G8NQFbcCMauh2Vzu1g'
+                ]
+            },
+            vividnoir: {
+                title: 'Login Page',
+                images: [
+                    'https://lh3.googleusercontent.com/aida-public/AB6AXuA4oCPlOLm9UqL8YgCAWldiZFmRKQ6kg1tl7xtvDvcTxabCJUacbg7y37znntNKeD7eU1tm9nROg80o7DyjZA6gL6oJJeCe0OgGiFrYAkaoL7RzhNKLHVQRYDENLTdz8ec8RW0z0_vBakklLrJBLFA51Wv0flNAoH7Vdr2CizQuCpli5RMrhzi9k-nuqD9KJefh5Ca9HYq_HzVmG2TfIkvJQXjoWiLh8puhyd0kmtAILUyKKWl8sl7J5E_Sze6xHUToYKrvfHiw1V4',
+                    'https://lh3.googleusercontent.com/aida-public/AB6AXuChwPXf83F2FmGRFCbNiK34Zn7gGWo9gTYWhC_zg0ujleW6LZoMThUJJGVmh0XZnCZJ1zuxq-rHnHKE2S8tcgAYG0bVJ68RtCLZMl2LytiKcZqNR6yowYZikhQl6C-9XLEi8jWb2dYYxxRYIcv7HfOEWTdZ_r0axfNufL6Vmo6uNIBhxjnVcufhLP5Z-5g563RutrAA0UTMnnqrzkVqOyM1Skb-aEE7m8g27Bai7remjUSdR80GkIHYswLLUZs2Mz1haelwf5eQv4g'
+                ]
+            }
+        };
+
+        function openOverlay(projectId) {
+            const data = projectData[projectId];
+            if(!data) return;
+
+            let html = `
+                <h2 class="font-display text-display text-secondary mb-16 text-center">${data.title}</h2>
+                <div class="space-y-24">
+            `;
+            
+            data.images.forEach(img => {
+                html += `
+                    <div class="luxury-card rounded-sm overflow-hidden p-3 bg-surface shadow-xl">
+                        <img src="${img}" class="w-full h-auto rounded-sm border border-black/5">
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            overlayContent.innerHTML = html;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOverlay() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => { overlayContent.innerHTML = ''; }, 600);
+        }
+    </script>
+</body></html>
